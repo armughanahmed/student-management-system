@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AttendanceViewComponent } from './attendance-view/attendance-view.component';
 
-const routes: Routes = [];
+const routes: Routes = [{ path: 'view', component: AttendanceViewComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AttendanceRoutingModule { }
+export class AttendanceRoutingModule {}
