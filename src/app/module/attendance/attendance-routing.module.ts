@@ -9,3 +9,4 @@ const routes: Routes = [{ path: 'view', component: AttendanceViewComponent }];
   exports: [RouterModule],
 })
 export class AttendanceRoutingModule {}
+  
