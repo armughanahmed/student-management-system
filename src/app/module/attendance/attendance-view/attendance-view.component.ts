@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Table } from 'primeng/table';
+import { AttendanceViewModel } from '../models/attendance-view.model';
+import { AttendanceService } from '../attendance.service';
 
 @Component({
   selector: 'app-attendance-view',
@@ -6,16 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendance-view.component.scss'],
 })
 export class AttendanceViewComponent implements OnInit {
-  products: any[] = [
-    {
-      code: 'mbvjkgip5',
-      name: 'Bamboo Watch',
-      category: 'Accessories',
-      quantity: 24,
-    },
-  ];
+  attendance: AttendanceViewModel[] = [];
 
-  constructor() {}
+  clearTable(table: Table) {
+    table.clear();
+  }
 
-  ngOnInit() {}
+  constructor(private _attendanceService: AttendanceService) {}
+
+  ngOnInit(): void {
+    this._attendanceService
+      .getAttendance()
+      .subscribe((x) => (this.attendance = x));
+  }
 }

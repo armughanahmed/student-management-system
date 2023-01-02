@@ -1,11 +1,11 @@
 <div class="container">
   <p-table
     #dt
-    [value]="attendance"
+    [value]="grade"
     [rows]="20"
     [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[10, 20, 50, 1000]"
-    [paginator]="attendance.length >= 20"
+    [paginator]="grade.length >= 20"
   >
     <ng-template pTemplate="caption">
       <div class="d-flex align-items-center">
@@ -16,11 +16,11 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="status">
-          Status <p-sortIcon field="status"></p-sortIcon>
+        <th pSortableColumn="grade">
+          Grade <p-sortIcon field="grade"></p-sortIcon>
           <p-columnFilter
             type="text"
-            field="status"
+            field="grade"
             display="menu"
           ></p-columnFilter>
         </th>
@@ -32,7 +32,6 @@
             display="menu"
           ></p-columnFilter>
         </th>
-        <th>Date</th>
         <th pSortableColumn="courseName">
           Course Name <p-sortIcon field="courseName"></p-sortIcon>
           <p-columnFilter
@@ -41,14 +40,22 @@
             display="menu"
           ></p-columnFilter>
         </th>
+        <th pSortableColumn="teacherName">
+          Teacher Name <p-sortIcon field="teacherName"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            field="teacherName"
+            display="menu"
+          ></p-columnFilter>
+        </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-attendanceList let-rowIndex="rowIndex">
+    <ng-template pTemplate="body" let-gradeList let-rowIndex="rowIndex">
       <tr>
-        <td>{{ attendanceList.status }}</td>
-        <td>{{ attendanceList.studentName }}</td>
-        <td>{{ attendanceList.date }}</td>
-        <td>{{ attendanceList.courseName }}</td>
+        <td>{{ gradeList.grade }}</td>
+        <td>{{ gradeList.studentName }}</td>
+        <td>{{ gradeList.courseName }}</td>
+        <td>{{ gradeList.teacherName }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
